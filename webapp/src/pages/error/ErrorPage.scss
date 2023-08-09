@@ -1,0 +1,52 @@
+@import '../../global.scss';
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  &__title {
+    text-align: center;
+
+    color: #FF4444;
+    font-size: 40px;
+    line-height: 51px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  &__form-container {
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 2px;
+    background: #f1f1f1 0% 0% no-repeat padding-box;
+    min-width: 300px;
+  }
+
+  &__separator {
+    margin-top: 10px;
+    border-top: 1px solid #c1c1c1;
+    border-bottom: none;
+  }
+
+  &__body-container {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  &__body {
+    text-align: center;
+    color: $nero;
+    font-size: 18px;
+    text-align: center;
+    line-height: 24px;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    margin-top: 16px;
+  }
+}

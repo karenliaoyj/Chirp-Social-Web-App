@@ -1,0 +1,80 @@
+@import '../../global.scss';
+
+.menu-item-container {
+    display: flex;
+    flex-direction: row;
+    padding: 4px 8px;
+    cursor: pointer;
+
+    border-radius: 8px;
+    margin-bottom: 4px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &--selected {
+        background-color: dodgerblue;
+    }
+}
+
+.menu-icon-public-channel {
+    @include fa-icon-solid($fa-var-hashtag);
+}
+
+.menu-icon-private-channel {
+    @include fa-icon-solid($fa-var-lock);
+}
+
+.menu-icon-create {
+    @include fa-icon-solid($fa-var-plus);
+}
+
+.menu-icon-direct-message {
+    @include fa-icon-solid($fa-var-user);
+}
+
+.menu-icon-search {
+    @include fa-icon-solid($fa-var-magnifying-glass);
+    font-size: 14px;
+}
+
+.menu-item {
+    width: 100%;
+    margin-left: 8px;
+}
+
+.menu-item-title {
+    font-size: 14px;
+    color: #b7b7b7;
+    max-width: 85%;
+    overflow-wrap: anywhere;
+
+    &--selected {
+        color: white;
+    }
+
+    &--unread {
+        color: white;
+        font-weight: 600;
+    }
+}
+
+.menu-item-count-container {
+    padding: 0px 4px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.menu-item-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: #34485e;
+}
+
+.conversation-menu-item-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

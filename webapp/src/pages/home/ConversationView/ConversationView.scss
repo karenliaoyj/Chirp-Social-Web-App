@@ -1,0 +1,52 @@
+@import '../../../global.scss';
+
+.conversation-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 74px);
+    margin: 8px 0px 16px;
+}
+
+.conversation-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: scroll;
+    padding-bottom: 16px;
+}
+
+.sticky-textarea {
+    margin-top: auto;
+    resize: none;
+}
+
+.conversation-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 8px 12px;
+}
+
+.conversation-title {
+    font-size: 24px;
+    color: white;
+
+    margin-right: 12px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.conversation-search {
+    @include fa-icon-solid($fa-var-magnifying-glass);
+    font-size: 24px;
+    color: lightgrey;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.conversation-search:hover {
+    transform: scale(1.2);
+    color: white;
+}

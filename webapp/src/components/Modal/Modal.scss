@@ -1,0 +1,57 @@
+// We had an issue about the scrolling of page content and the scrolling of modal.
+// Here we are going to explain how we use pure CSS to solve this.
+//
+// First portal and overlay must be position: fixed so that they
+// cover the viewport at all time.
+//
+// Second the overlay has overflow-y: scroll so that if the content
+// overflows it, scrollbar is shown.
+//
+// Third the overlay should have pointer-events: all while portal
+// and content should have pointer-events: none. So clicking on
+// the overlay will dismiss the modal as we expect. Note that
+// the actual content must have pointer-events: all to revert
+// the fact that content is pointer-events: none.
+//
+// Lastly when the modal is opened, we must set overflow: hidden to body
+// to disallow scrolling of page content BUT retain scroll offset.
+
+.modal {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+
+  &__content {
+    min-height: 200px;
+    pointer-events: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__children {
+    pointer-events: all;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: all;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(26, 26, 26, 0.8);
+  }
+}

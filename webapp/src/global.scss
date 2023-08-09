@@ -1,0 +1,174 @@
+// importing core styling file
+@import "./fontawesome/scss/fontawesome.scss";
+@import "./fontawesome/scss/solid.scss";
+
+
+$primary-color: #70A9A1;
+$nero: #1a1a1a;
+
+$breakpoints: (
+  phone: 576px,
+  tablet: 768px,
+  desktop: 1028px,
+);
+
+body {
+  margin: 0;
+  font-family: DINPro, 'source-han-sans-traditional', Helvetica, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p,
+div,
+span,
+label,
+button,
+input {
+  font-family: DINPro, 'source-han-sans-traditional', Helvetica, Arial,
+    sans-serif;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.button {
+  &__primary {
+    height: inherit;
+    width: 100%;
+    min-width: 100px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0;
+    color: #ffffff;
+    background-color: $primary-color;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-top: 14px;
+    padding-bottom: 11px;
+    padding-left: 14px;
+    padding-right: 14px;
+    box-sizing: border-box;
+    border-radius: 1px;
+    background-position: center;
+
+    &:hover {
+      background: #40798C radial-gradient(circle, transparent 1%, #1e40798C 1%) center/15000%;
+    }
+
+    &:active {
+      background-color: #0B2027;
+      background-size: 100%;
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      color: white;
+      cursor: default;
+    }
+
+    &--inherit-width {
+      width: inherit;
+    }
+  }
+
+  &__outline {
+    height: inherit;
+    width: 100%;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    white-space: nowrap;
+    line-height: 18px;
+    color: $primary-color;
+    border: 2px solid $primary-color;
+    border-radius: 1px;
+    box-sizing: border-box;
+    background-color: transparent;
+    background-position: center;
+
+    &--capitalise {
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      background: #F6F1D1 radial-gradient(circle, transparent 1%, #1eF6F1D1 1%) center/15000%;
+    }
+
+    &:disabled {
+      border: 2px solid #cccccc;
+      color: #cccccc;
+      background-color: white;
+      cursor: default;
+    }
+
+    &:active {
+      background-color: #1e6aa700;
+      background-size: 100%;
+    }
+  }
+
+  &__plain {
+    height: inherit;
+    width: 100%;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    white-space: nowrap;
+    line-height: 18px;
+    color: $nero;
+    border: 2px solid #4D4D4D;
+    border-radius: 1px;
+    box-sizing: border-box;
+    background-color: transparent;
+    background-position: center;
+
+    &--capitalise {
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      background: #F6F1D1 radial-gradient(circle, transparent 1%, #878787d1 1%) center/15000%;
+    }
+
+    &:disabled {
+      border: 2px solid #cccccc;
+      color: #cccccc;
+      background-color: white;
+      cursor: default;
+    }
+
+    &:active {
+      background-color: #1e6aa700;
+      background-size: 100%;
+    }
+  }
+}
+
+// Prevent scroll bar in parent component from appearing when Modal is opened
+// Ref: https://github.com/reactjs/react-modal/issues/191#issuecomment-230459026
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}
+
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+@mixin transform($args...) {
+	-webkit-transform: $args;
+	-moz-transform: $args;
+	-ms-transform: $args;
+	-o-transform: $args;
+	transform: $args;
+}

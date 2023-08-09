@@ -1,0 +1,77 @@
+@import '../../../global.scss';
+
+.channel-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 74px);
+    margin: 8px 0px 16px;
+}
+
+.channel-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: scroll;
+    padding-bottom: 16px;
+}
+
+.sticky-textarea {
+    margin-top: auto;
+    resize: none;
+}
+
+.channel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.channel-title {
+    display: flex;
+    flex-direction: row;
+    margin: 8px 16px 12px 0px;
+    max-width: 80%;
+}
+
+.channel-name {
+    font-size: 24px;
+    color: white;
+    margin-right: 12px;
+
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.channel-leave {
+    font-size: 18px;
+    color: #eabeb4;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    min-width: 70px;
+}
+
+.channel-leave:hover {
+    color: #9F422D;
+}
+
+.channel-leave-icon {
+    @include fa-icon-solid($fa-var-person-running);
+}
+
+.channel-user-button {
+    @include fa-icon-solid($fa-var-user);
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    min-width: 40px;
+}
+
+.channel-user-button:hover {
+    color: #B3D1CD;
+    border: 1px solid #B3D1CD;
+}

@@ -1,0 +1,82 @@
+stages:
+  - test
+  - build
+  - deploy
+
+.ubuntu_install_make: &ubuntu_install_make |-
+  apt-get update
+  apt-get install -y make
+
+.alpine_install_make: &alpine_install_make |-
+  apk add --no-cache make
+
+.alpine_install_git: &alpine_install_git |-
+  apk add --no-cache git
+
+# keeping the following installation script for now, in case we need to install docker in ubuntu environment in the future
+# .install_docker_dependencies: &install_docker_dependencies |-
+#   apt-get update
+#   apt-get install -y curl tar git
+
+# .install_docker: &install_docker |-
+#   curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz
+#   tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 -C /usr/local/bin docker/docker
+#   rm docker-${DOCKERVERSION}.tgz
+#   curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+#   chmod +x /usr/local/bin/docker-compose
+
+maven-build:
+  image: maven:latest
+  stage: test
+  before_script:
+    - *ubuntu_install_make
+  script: 
+    - "make build"
+  artifacts:
+    paths:
+      - webserver/target/*
+
+maven-test:
+  image: maven:latest
+  stage: test
+  before_script:
+    - *ubuntu_install_make
+  script: 
+    - "make test"
+  needs:
+    - maven-build
+
+docker-build:
+  image: docker:latest
+  stage: build
+  only:
+    - main
+  services:
+    - name: docker:dind
+      alias: thedockerhost
+  variables:
+    # Tell docker CLI how to talk to Docker daemon; see
+    # https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker-executor
+    DOCKER_HOST: tcp://thedockerhost:2375/
+    # Use the overlayfs driver for improved performance:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - *alpine_install_make
+    - *alpine_install_git
+    - ls -al $CI_PROJECT_DIR/webserver
+    - ls -al $CI_PROJECT_DIR/webserver/target
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
+  script:
+    - |
+      if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then
+        tag=""
+        echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = 'latest'"
+      else
+        tag=":$CI_COMMIT_REF_SLUG"
+        echo "Running on branch '$CI_COMMIT_BRANCH': tag = $tag"
+      fi
+    - "make docker-build MODULE=webserver"
+    - "make docker-push MODULE=webserver"
+  dependencies:
+    - maven-build

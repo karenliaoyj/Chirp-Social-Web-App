@@ -1,0 +1,101 @@
+@import '../../global.scss';
+
+$secondary-content-w: 300px;
+$secondary-color: #fefae1;
+
+.main-content-wrapper {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	overflow: hidden;
+}
+
+.main-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0 20px;
+	overflow: hidden;
+	min-width: 300px;
+}
+
+.secondary-content {
+	position: relative;
+	overflow-y: scroll;
+	max-width: $secondary-content-w;
+	min-width: 200px;
+	height: 100%;
+	color: #1a1a1a;
+	background-color: $secondary-color;
+	padding: 20px;
+	flex: 0 0 30%;
+}
+
+.secondary-content-xmark{
+	position: absolute;
+	top: 8px;
+	right: 20px;
+	font-size: 20px;
+	color: rgb(70, 68, 68);
+}
+
+.secondary-content-thread{
+
+  	border-radius: 4px;
+  	width: 100%;
+  	margin-bottom: 20px;
+  	overflow: hidden;
+  	position: relative;
+}
+
+.thread-time{
+	padding: 0 8px;
+	color: black;
+	font-size: 10px;
+}
+
+.thread-container{
+	padding: 8px;
+	margin-bottom: 8px;
+	border-bottom: 1px solid black;
+}
+
+.meta.thread-meta{
+	margin-top: 8px;
+	border-bottom: none;
+	color: brown
+}
+
+.comment-meta{
+	color: rgb(89, 36, 36);
+}
+
+.comment_in_thread{
+	margin: 0px 0px 8px 16px;
+    padding: 10px;
+    position: relative;
+	color: rgb(57, 55, 55);
+	position: relative;
+	border-bottom: 1px solid lightgray;
+}
+
+.sticky-textarea{
+	padding: 8px;
+	margin-top: 35px;
+    resize: none;
+	width: 100%;
+}
+
+.secondary-content-xmark {
+    @include fa-icon-solid($fa-var-xmark);
+	font-size: 24px;
+}
+
+.comment-title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 4px;
+}

@@ -1,0 +1,42 @@
+.post-container{
+    margin: 0px 0px 8px;
+    padding: 10px 20px;
+    position: relative;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+       	 -o-border-radius: 4px;
+    		border-radius: 4px;
+	background: #0d1a2b;
+	color: white;
+	position: relative;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.post-time{
+    padding: 8px;
+    font-size: 10px;
+    color: lightgrey;
+
+}
+
+.meta{
+    font-size: 16px;
+	color: #1abc9c;
+	padding-bottom: 8px;
+	margin-bottom: 10px !important;
+	border-bottom: 1px solid lightblue;
+}
+
+.comment-container button {
+    position: absolute; 
+    top: 10px; 
+    right: 20px; 
+    color: #6495ED
+}
+
+.content{
+    word-wrap: break-word;
+}

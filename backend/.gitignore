@@ -1,0 +1,28 @@
+# Ignore database files
+*.db
+*.sqlite3
+
+# Ignore static files
+staticfiles/
+*.css
+*.js
+*.map
+
+# Ignore media files
+media/
+
+# Ignore temporary files
+*.log
+*.pyc
+
+# Ignore environment files
+.env
+config.ini
+
+# Ignore IDE-specific files
+.vscode/
+*.pyc
+__pycache__/
+*.egg-info/
+*.egg/
+*.DS_Store

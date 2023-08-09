@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk-alpine
+COPY webserver/target/chirp-webserver.jar /chirp-webserver.jar
+EXPOSE 8080
+CMD ["java", "-jar", "/chirp-webserver.jar"]

@@ -1,0 +1,67 @@
+@import '../../global.scss';
+
+$bg-color: #0D141C;
+$font-color: #FFFFFF;
+$font-color-hover: #CCCCCC;
+$button-bg-color: #2ECC71;
+$button-bg-color-disabled: #CCCCCC;
+$button-font-color: #FFFFFF;
+$button-font-color-hover: #FFFFFF;
+$button-border-radius: 50%;
+
+.textarea {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-top: auto;
+        resize: none;
+        background-color: $bg-color;
+        border-radius: 8px;
+    }
+
+    &__textarea {
+        flex-grow: 1;
+        background-color: $bg-color;
+        color: $font-color;
+        border: none;
+        padding: 10px;
+        resize: none;
+        font-size: 14px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    
+        &:hover,
+        &:focus {
+          color: $font-color-hover;
+          outline: none;
+        }
+    }
+
+    &__button {
+        margin-top: 10px;
+        background-color: $button-bg-color;
+        color: $button-font-color;
+        border: none;
+        padding: 8px 9px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: $button-border-radius;
+        transition: background-color 0.3s ease-in-out;
+        max-width: 80px;
+        align-self: flex-end;
+        margin: 0px 6px 6px;
+
+        &:hover:not(:disabled) {
+            background-color: darken($button-bg-color, 10%);
+        }
+
+        &:disabled {
+            background-color: $button-bg-color-disabled;
+            cursor: not-allowed;
+        }
+    }
+
+    &__submit-icon {
+        @include fa-icon-solid($fa-var-paper-plane);
+    }
+}

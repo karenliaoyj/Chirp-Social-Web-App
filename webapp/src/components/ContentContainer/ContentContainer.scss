@@ -1,0 +1,105 @@
+@import '../../global.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+.cf:before,
+.cf:after {
+	content: " ";
+	display: table;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	*zoom: 1;
+}
+
+$first-theme-color: #34485e;
+$second-theme-color: #1f2c39;
+$secondary-color: #fefae1;
+$nero: #1a1a1a;
+
+// side menu
+$side-menu-w: 240px;
+
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: $second-theme-color;
+}
+
+.container-background-primary {
+	background-color: $second-theme-color;
+}
+
+.container-background-secondary {
+	background-color: $secondary-color;
+}
+
+.side-menu-container {
+	// force hardware acceleration in Chrome
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+
+	width: $side-menu-w;
+	height: calc(100vh - 45px);
+	overflow: scroll;
+	background-color: $first-theme-color;
+	color: white;
+	position: fixed;
+	top: 45px;
+	left: 0;
+	z-index: 1;
+	visibility: hidden;
+	padding: 20px;
+
+	@include transition(transform .2s 0s, visibility 0s .2s);
+	@include transform(translateX(-$side-menu-w));
+
+	&.slide-in {
+		visibility: visible;
+		@include transform(translateX(0));
+		@include transition(transform .2s 0s, visibility 0s 0s);
+	}
+}
+
+.page-content {
+	// force hardware acceleration in Chrome
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+
+	height: 100%;
+	transition-property: transform;
+	transition-duration: .2s;
+	position: relative;
+	z-index: 2;
+	background: $second-theme-color;
+	color: white;
+	width: 100vw;
+	height: calc(100vh - 50px);;
+
+	&.slide-content {
+		@include transform(translateX($side-menu-w));
+		width: calc(100vw - 240px) !important;
+	}
+}

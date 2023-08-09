@@ -1,0 +1,40 @@
+from django.urls import path
+from .views import (
+    ChannelView,
+    ChannelsView,
+    ConversationView,
+    ConversationsView,
+    JoinChannelView,
+    LeaveChannelView,
+    SignupView,
+    GetCSRFToken,
+    GetAuthToken,
+    LoginView,
+    LogoutView,
+    MessagesView,
+    MessagesMarkAsReadView,
+    PublicChannelsView,
+    UsersView,
+    PostView,
+)
+
+urlpatterns = [
+    path('signup', SignupView.as_view()),
+    path('login', LoginView.as_view()),
+    path('logout', LogoutView.as_view()),
+    path('csrf_cookie', GetCSRFToken.as_view()),
+    path('auth_token', GetAuthToken.as_view()),
+
+    path('users', UsersView.as_view()),
+    path('channel', ChannelView.as_view()),
+    path('channel/<str:channel_id>', ChannelView.as_view()),
+    path('channel/<str:channel_id>/join', JoinChannelView.as_view()),
+    path('channel/<str:channel_id>/leave', LeaveChannelView.as_view()),
+    path('channels', ChannelsView.as_view()),
+    path('public-channels', PublicChannelsView.as_view()),
+    path('conversation', ConversationView.as_view()),
+    path('conversation/<str:conversation_id>/messages', MessagesView.as_view()),
+    path('conversation/<str:conversation_id>/messages/mark-as-read', MessagesMarkAsReadView.as_view()),
+    path('conversations', ConversationsView.as_view()),
+    path('channels/<str:channel_id>/posts', PostView.as_view()),
+]

@@ -1,0 +1,149 @@
+@import '../../global.scss';
+
+$first-theme-color: #34485e;
+$second-theme-color: #c4d4c9;
+$secondary-color: #fefae1;
+$nero: #1a1a1a;
+
+// burger button
+$burger-h: 22px;
+$burger-w: 26px;
+
+// burger button stripes
+$menu-stripe-w: 26px;
+$menu-stripe-h: 3px;
+$menu-stripe-color: $second-theme-color;
+$menu-stripe-color-h: white;
+
+// header
+$header-h: 50px;
+$header-background: $first-theme-color;
+
+.menu-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $header-background;
+	height: $header-h;
+	width: 100%;
+	padding: 10px;
+	position: relative;
+	z-index: 4;
+	box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .5);
+}
+
+.menu-right {
+	display: flex;
+	flex-direction: row;
+	color: white;
+	font-size: 16px;
+
+	button {
+		margin-left: 12px;
+		color: white;
+		font-size: 16px;
+	}
+}
+
+.menu-stripe {
+	display: inline-block;
+	width: $menu-stripe-w;
+	height: $menu-stripe-h;
+	background: $menu-stripe-color;
+	position: relative;
+	@include transition(all .1s linear);
+
+	&:before,
+	&:after {
+		content: "";
+		display: inline-block;
+		width: $menu-stripe-w;
+		height: $menu-stripe-h;
+		background: $menu-stripe-color;
+		position: absolute;
+		left: 0;
+		@include transition(all .1s linear);
+	}
+
+	&:before {
+		top: -8px;
+	}
+
+	&:after {
+		top: 8px;
+	}
+}
+
+#menu-trigger {
+	display: inline-block;
+	width: $burger-w;
+	height: $burger-h;
+	position: absolute;
+	top: 42%;
+	left: 20px;
+	@include transform(translateY(-50%));
+
+	// when you click the hamburger button
+	&.menu-clicked {
+		.menu-stripe {
+			background-color: transparent;
+
+			&:before {
+				background-color: white;
+				top: 42%;
+				@include transform(translateY(-50%) rotate(45deg));
+			}
+
+			&:after {
+				background-color: white;
+				top: 42%;
+				@include transform(translateY(-50%) rotate(-45deg));
+			}
+		}
+
+		// hovering the hamburger button when its clicked
+		&:hover {
+			.menu-stripe {
+				background-color: transparent;
+
+				&:before {
+					top: 42%;
+					@include transform(translateY(-50%) rotate(45deg));
+				}
+
+				&:after {
+					top: 42%;
+					@include transform(translateY(-50%) rotate(-45deg));
+				}
+			}
+		}
+	}
+
+	// hover the hamburger button
+	&:hover {
+		.menu-stripe {
+			background-color: $menu-stripe-color-h;
+
+			&:before,
+			&:after {
+				background-color: $menu-stripe-color-h;
+			}
+
+			&:before {
+				top: -10px;
+			}
+
+			&:after {
+				top: 10px;
+			}
+		}
+	}
+}
+
+.menu-title {
+	margin-left: 60px;
+	color: white;
+	font-weight: 600;
+	font-size: 20px;
+}

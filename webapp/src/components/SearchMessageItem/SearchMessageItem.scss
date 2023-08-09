@@ -1,0 +1,57 @@
+$primary-color: #006d77;
+$primary-hover-color: #3caea3;
+$primary-active-color: #2a9d8f;
+$font-color: #1f2c39;
+$separator-color: darkgrey;
+
+.search-message-item-container {
+  margin-bottom: 8px;
+  padding: 4px 20px;
+  position: relative;
+  border-radius: 4px;
+  color: $font-color;
+  cursor: pointer;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    background-color: #f2f2f2; // Change this to the hover color you want
+  }
+
+  &:active {
+    background-color: #d9d9d9; // Change this to the active color you want
+  }
+}
+
+.search-message-item-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .search-message-item-time {
+    padding: 0 8px;
+    font-size: 10px;
+    color: $separator-color;
+  }
+
+  .search-message-item-meta {
+    font-size: 16px;
+    color: $primary-color;
+    margin-bottom: 4px;
+  
+    &:hover {
+      color: $primary-hover-color;
+    }
+  
+    &:active {
+      color: $primary-active-color;
+    }
+  }
+}
+
+.search-message-item-content {
+  font-size: 14px;
+  color: $font-color;
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "model": "chirp.channel",
+    "pk": 1,
+    "fields": {
+      "name": "General",
+      "type": "public",
+      "description": "This is the default General channel for all users"
+    }
+  }
+]

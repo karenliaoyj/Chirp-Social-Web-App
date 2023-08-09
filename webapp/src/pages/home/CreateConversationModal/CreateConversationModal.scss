@@ -1,0 +1,76 @@
+@import '../../../global.scss';
+
+$primary-color: #70A9A1;
+$nero: #1a1a1a;
+
+.base-modal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 870px;
+    min-width: 250px;
+    width: 100%;
+    background-color: white;
+
+    &__cancel {
+      cursor: pointer;
+      position: absolute;
+      top: -12px;
+      right: -12px;
+    }
+
+    &__cancel-icon {
+        @include fa-icon-solid($fa-var-close);
+        font-size: 24px;
+        position: absolute;
+        right: 20px;
+        top: 16px;
+        color: #999999;
+    }
+  
+    &__title {
+      text-align: left;
+  
+      color: $primary-color;
+      font-size: 22px;
+      line-height: 31px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      opacity: 1;
+    }
+  
+    &__content {
+      color: $nero;
+      margin-top: 30px;
+      text-align: left;
+      letter-spacing: 0;
+      opacity: 1;
+    }
+  
+    &__info {
+      text-align: left;
+      color: $nero;
+      font-size: 16px;
+      line-height: 21px;
+      letter-spacing: 0;
+    }
+  
+    &__link {
+      cursor: pointer;
+      color: $primary-color;
+      font-size: 16px;
+      line-height: 21px;
+      letter-spacing: 0;
+      text-align: left;
+      text-decoration-color: none;
+    }
+  
+    &__submit-button {
+      align-self: flex-end;
+      margin-top: 30px;
+      width: 106px;
+    }
+  }
+  
